@@ -20,6 +20,7 @@ class App extends Component {
 
   }
   addToList = (date)=>{
+
     let newItem = this.state.userInput;
     // console.log(date);
     const tmpDate = new Date(this.state.date);
@@ -78,6 +79,13 @@ class App extends Component {
         <div>
           {userList}
         </div>
+        
+      <form onSubmit={(event)=>{
+        // to press enter when you like to add new list
+        event.preventDefault()
+        this.addToList();
+      }
+        }>
     <MyCalendar addDateToList={this.addDateToList}/>
       <div className="input-group mt-5">
         <input type="text" value={this.state.userInput} onChange={this.userChangInput} className="form-control" placeholder="what do you like to do" aria-label="Recipient's username" aria-describedby="button-addon2" />
@@ -85,6 +93,7 @@ class App extends Component {
           <div className="input-group-append">
           </div>
           </div>
+      </form>
 
         
       <button type="button" onClick={this.clearList} className="btn btn-outline-secondary mt-5">clear</button>
